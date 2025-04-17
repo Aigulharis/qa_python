@@ -1,14 +1,14 @@
 import random
 from faker import Faker
 
-def generate_random_book():
-    titles: ['Гордость и предубеждение', 'Что делать, если ваш кот хочет вас убить', 'Дом']
-    return random.choice(titles)
+def generate_random_collector():
+    name: ['Гордость и предубеждение', 'Что делать, если ваш кот хочет вас убить', 'Дом']
+    return random.choice(name)
 
 fake = Faker('ru_RU')
 
-def generate_random_book_title():
+def generate_random_collector_name():
     return fake.catch_phrase()
 
 if __name__ == "__main__":
-    print(generate_random_book_title())
+    print(generate_random_collector_name())

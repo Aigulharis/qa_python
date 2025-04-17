@@ -1,15 +1,16 @@
 import pytest
 
-from helpers import generate_random_book_title
+from helpers import generate_random_collector_name
 from main import BooksCollector
 
 
-@pytest.fixture(scope="function")
-def book():
-    book = BooksCollector(name=generate_random_book_title())
-    return book
+@pytest.fixture
+def collector():
+    collector = BooksCollector()
+    return collector
 
-@pytest.fixture()
-def book_with_favorite(book):
-    book.add_book_in_favorites(generate_random_book_title())
-    return book
+@pytest.fixture
+def collector_with_favorite(collector):
+    random_name = generate_random_collector_name()
+    collector.add_book_in_favorites(random_name)
+    return collector
