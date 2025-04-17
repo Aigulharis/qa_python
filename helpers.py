@@ -2,7 +2,7 @@ import random
 from faker import Faker
 
 def generate_random_collector():
-    name: ['Гордость и предубеждение', 'Что делать, если ваш кот хочет вас убить', 'Дом']
+    name: ['Гордость и предубеждение', 'Каспер', 'Дом']
     return random.choice(name)
 
 fake = Faker('ru_RU')
