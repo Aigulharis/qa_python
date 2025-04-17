@@ -87,7 +87,7 @@ class TestBooksCollector:
 @pytest.mark.parametrize("book_names,expected_count", [
     ([], 0),  # Без книг
     (["Гордость и предубеждение"], 1),  # 1 книга
-    (["Гордость и предубеждение", "Что делать, если ваш кот хочет вас убить"], 2),  # 2 книги
+    (["Гордость и предубеждение", "Каспер"], 2),  # 2 книги
 ])
 def test_add_book_in_favorites_quantity_true(book_names, expected_count):
     collector = BooksCollector()

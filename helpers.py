@@ -12,3 +12,4 @@ def generate_random_collector_name():
 
 if __name__ == "__main__":
     print(generate_random_collector_name())
+
