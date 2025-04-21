@@ -25,14 +25,13 @@ class TestBooksCollector:
         collector.set_book_genre('Каспер', 'Фантастика')
         assert collector.get_book_genre('Каспер') == 'Фантастика'  # Проверяем, что жанр установлен # Проверяем, что жанр установлен
 
-# 2.1 Проверяем get_book_genre— выводит жанр книги по её имени.
+# 2.1 Проверяем get_book_genre— выводит жанр книги по её имени и сравниваем с данными в словаре.
     def test_get_book_genre_returns_correct_genre(self):
         collector = BooksCollector()
         collector.add_new_book('Дюна')
-        collector.set_book_genre('Дюна', 'Фантастика')
-        expected_genre = 'Фантастика'
+        collector.books_genre['Дюна'] = 'Фантастика'
         actual_genre = collector.get_book_genre('Дюна')
-        assert actual_genre == expected_genre # Проверяем, что жанр книги возвращается по её имени
+        assert actual_genre == collector.books_genre['Дюна']  # Сравниваем со словарем
 
 # 3 Проверяем get_books_with_specific_genre— выводит список книг с определённым жанром.
     def test_get_books_with_specific_genre_assigned_genre(self):
@@ -81,7 +80,14 @@ class TestBooksCollector:
         collector.add_new_book('Каспер')
         collector.add_book_in_favorites('Каспер')
         collector.add_book_in_favorites('Каспер')  # Пытаемся добавить дубликат
+        favorites = collector.get_list_of_favorites_books()
         assert len(collector.get_list_of_favorites_books()) == 1  # Проверяем, что книга не добавилась дважды
+        assert 'Каспер' in favorites # Проверяем, что в избранном именно Каспер
+        all_books = collector.get_books_genre() # общий словарь
+        assert 'Каспер' in all_books # Проверяем, что книга есть в общем словаре
+        # я возможно не до конца поняла замечание, в данном тесте проверяем отсутствие дубликата поэтому проверила, что книга 1
+        print(favorites)# вывод списка избранного
+
 
 #9 тестирование количества книг в избранных после добавления нескольких книг
 @pytest.mark.parametrize("book_names,expected_count", [
